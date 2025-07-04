@@ -114,8 +114,7 @@ public class Customer
                 }
         }
 
-        double shippingFee = shippingWeight * SHIPPING_FEES;
-        double totalAmount = subtotal + shippingFee;
+        double totalAmount = subtotal + SHIPPING_FEES;
 
         // Check balance
         if (totalAmount > balance)
@@ -142,16 +141,14 @@ public class Customer
         // Print receipt
         System.out.println("\n** Checkout receipt **");
         for (CartItem item : cart)
-            System.out.printf("%dx %-15s %6.2f EGP%n",
+            System.out.printf("%dx %-15s %6.2f%n",
                     item.getQuantity(), item.getProduct().getName(),
                     item.getProduct().getPrice() * item.getQuantity());
 
         System.out.println("--------------------------------");
-        System.out.printf("Subtotal\t%6.2f EGP%n", subtotal);
-        System.out.printf("Shipping\t%6.2f EGP%n", shippingFee);
-        System.out.printf("Amount\t\t%6.2f EGP%n", totalAmount);
-        System.out.printf("New balance\t%6.2f EGP%n", balance);
-        System.out.println("--------------------------------");
+        System.out.printf("Subtotal\t%6.2f%n", subtotal);
+        System.out.printf("Shipping\t%6.2f%n", SHIPPING_FEES);
+        System.out.printf("Amount\t\t%6.2f%n", totalAmount);
 
         // Clear cart
         cart.clear();

@@ -33,6 +33,7 @@ public class FawryECommerce
                     break;
                 case 4:
                     customer.checkout();
+                    programRunning = false;
                     break;
                 case 5:
                     programRunning = false;
@@ -49,10 +50,10 @@ public class FawryECommerce
     static List<Product> fillProducts()
     {
         List<Product> products = new ArrayList<>();
-        products.add(new Product(1, "Laptop", 5000, 5, false, false, true, 2.5));
+        products.add(new Product(1, "Laptop", 5000, 5, false, false, true, 2500.00));
         products.add(new Product(2, "Milk", 30, 10, true, false, false, null));
         products.add(new Product(3, "Yogurt", 15, 20, true, true, false, null));
-        products.add(new Product(4, "Headphones", 250, 3, false, false, true, 0.8));
+        products.add(new Product(4, "Headphones", 250, 3, false, false, true, 800.00));
         products.add(new Product(5, "Online Course", 1000, 999, false, false, false, null));
         return products;
     }
@@ -112,6 +113,6 @@ public class FawryECommerce
         }
 
         customer.addToCart(selectedProduct, quantity);
-        System.out.println(quantity + "X " + selectedProduct.getName() + " added to cart!");
+        System.out.println(quantity + "x " + selectedProduct.getName() + " added to cart!");
     }
 }
