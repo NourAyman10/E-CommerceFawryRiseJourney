@@ -4,16 +4,17 @@ import java.util.List;
 
 public class ShippingService
 {
-    public static void shippingItems(List<Product> products)
+    public static void shippingCartItems(List<ShippingItems> shippingItems)
     {
-        System.out.println("Shipping Items");
-        for (Product product : products)
-        {
-            if(product.isShippable()) {
-                System.out.printf("- %s (Weight: %.2f kg)%n", product.getName(), product.getWeight());
-            }
-            
+        System.out.println("\n** Shipment notice **");
+        double totalWeight = 0;
+        
+        for (ShippingItems item : shippingItems) {
+            double weight = item.getWeight();
+            System.out.printf("%s\t%.2fkg%n", item.getName(), weight);
+            totalWeight += weight;
         }
-        System.out.println("Items Shipped Successfully");
+        
+        System.out.printf("Total package weight %.2fkg%n\n", totalWeight);
     }
 }

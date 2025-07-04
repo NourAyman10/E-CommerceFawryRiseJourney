@@ -78,19 +78,21 @@ public class FawryECommerce
     {
         displayProducts(products);
         System.out.print("Enter product ID to add to cart: ");
-        int productIndex = scanner.nextInt() - 1;
-
-        if (productIndex < 0 || productIndex >= products.size())
-        {
-            System.out.println("Invalid product selection!");
+        int productId = scanner.nextInt();
+        Product selectedProduct = null;
+        for (Product product : products) {
+            if (product.getId() == productId) {
+                selectedProduct = product;
+                break;
+            }
+        }
+        if (selectedProduct == null) {
+            System.out.println("Invalid product ID!");
             return;
         }
-
-        Product selectedProduct = products.get(productIndex);
-
         System.out.print("Enter quantity: ");
         int quantity = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
         if (quantity <= 0)
         {
@@ -103,8 +105,13 @@ public class FawryECommerce
             System.out.println("Not enough stock available!");
             return;
         }
+        
+        if (selectedProduct.isExpired()) {
+            System.out.println("This product has expired and cannot be added to cart!");
+            return;
+        }
 
         customer.addToCart(selectedProduct, quantity);
-        System.out.println(quantity + " x " + selectedProduct.getName() + " added to cart!");
+        System.out.println(quantity + "X " + selectedProduct.getName() + " added to cart!");
     }
 }

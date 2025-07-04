@@ -31,7 +31,7 @@ public class Product
                 + ", Price: " + price
                 + ", Quantity: " + quantity
                 + (canBeExpired ? (isExpired ? ", (Expired)" : ", (Not Expired)") : "")
-                + (isShippable ? ", Weight: " + weight + "g" : "");
+                + (isShippable ? ", Weight: " + String.format("%.2f ", weight) + "g" : "");
     }
 
     public double getPrice()
@@ -61,6 +61,16 @@ public class Product
     public boolean isShippable()
     {
         return isShippable;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
     }
 
 }
