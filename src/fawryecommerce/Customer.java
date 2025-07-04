@@ -47,14 +47,14 @@ public class Customer
         {
             Product product = item.getProduct();
             double itemTotal = product.getPrice() * item.getQuantity();
-            System.out.printf("%dx %-20s %6.2f EGP%n",
+            System.out.printf("%dx %-20s %6.2f%n",
                     item.getQuantity(), product.getName(), itemTotal);
             subtotal += itemTotal;
         }
 
         System.out.println("--------------------------------");
-        System.out.printf("Subtotal: %6.2f EGP%n", subtotal);
-        System.out.printf("Your balance: %6.2f EGP%n", balance);
+        System.out.printf("Subtotal: %6.2f%n", subtotal);
+        System.out.printf("Your balance: %6.2f%n", balance);
     }
 
     public void checkout()
@@ -119,7 +119,7 @@ public class Customer
         // Check balance
         if (totalAmount > balance)
         {
-            System.out.printf("Insufficient balance! You need %.2f EGP but only have %.2f EGP%n",
+            System.out.printf("Insufficient balance! You need %.2f but only have %.2f%n",
                     totalAmount, balance);
             return;
         }
