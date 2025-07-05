@@ -114,7 +114,7 @@ public class Customer
                 }
         }
 
-        double totalAmount = subtotal + SHIPPING_FEES;
+        double totalAmount = (!shippableItems.isEmpty()) ? subtotal + SHIPPING_FEES : subtotal;
 
         // Check balance
         if (totalAmount > balance)
@@ -137,7 +137,7 @@ public class Customer
         // Ship items if needed
         if (!shippableItems.isEmpty())
             ShippingService.shippingCartItems(shippableItems);
-                
+
         // Print receipt
         System.out.println("\n** Checkout receipt **");
         for (CartItem item : cart)
@@ -147,7 +147,8 @@ public class Customer
 
         System.out.println("--------------------------------");
         System.out.printf("Subtotal\t%6.2f%n", subtotal);
-        System.out.printf("Shipping\t%6.2f%n", SHIPPING_FEES);
+        if (!shippableItems.isEmpty())
+            System.out.printf("Shipping\t%6.2f%n", SHIPPING_FEES);
         System.out.printf("Amount\t\t%6.2f%n", totalAmount);
 
         // Clear cart

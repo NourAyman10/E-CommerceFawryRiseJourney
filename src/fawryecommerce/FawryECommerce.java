@@ -50,6 +50,7 @@ public class FawryECommerce
     static List<Product> fillProducts()
     {
         List<Product> products = new ArrayList<>();
+//        int id, String name, double price, int quantity, boolean canBeExpired, boolean isExpired, boolean isShippable, Double weight
         products.add(new Product(1, "Laptop", 5000, 5, false, false, true, 2500.00));
         products.add(new Product(2, "Milk", 30, 10, true, false, false, null));
         products.add(new Product(3, "Yogurt", 15, 20, true, true, false, null));
